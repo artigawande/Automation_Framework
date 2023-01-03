@@ -5,22 +5,46 @@ namespace EmployeeManagement
 {
     public class LoginUITest
     {
-        
+        IWebDriver driver;
 
-        [Test]
-        public void ValidateTitleTest()
+        [SetUp]
+        public void BeforeMethod()
         {
+            //browser launch
             IWebDriver driver = new ChromeDriver();
 
             driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitWait= TimeSpan.FromSeconds(20);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
 
             driver.Url = "https://opensource-demo.orangehrmlive.com/";
+        }
+
+        [TearDown]
+
+        public void AfterMethod()
+        {
+            //browser close
+            driver.Quit();
+
+        }
+        [Test]
+        public void ValidateTitleTest()
+        {
 
             string actualtitle = driver.Title;
-            //Console.WriteLine(actualtitle);
-
             Assert.That(actualtitle, Is.EqualTo("OrangeHRM"));
+        }
+
+        public void ValidatePlaceholderTest()
+        {
+
+
+            string actualUsernamePlaceholder = driver.FindElement(By.Name("username")).GetAttribute("placeholder");
+            string actualPasswordPlaceholder = driver.FindElement(By.Name("password")).GetAttribute("placeholder");
+
+            Assert.That(actualUsernamePlaceholder, Is.EqualTo("Username"));
+            Assert.That(actualPasswordPlaceholder, Is.EqualTo("Password"));
+
         }
     }
 }
