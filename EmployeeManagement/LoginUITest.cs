@@ -20,7 +20,7 @@ namespace EmployeeManagement
         }
 
         [TearDown]
-
+        //
         public void AfterMethod()
         {
             //browser close
