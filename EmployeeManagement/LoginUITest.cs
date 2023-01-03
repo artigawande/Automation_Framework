@@ -11,7 +11,7 @@ namespace EmployeeManagement
         public void BeforeMethod()
         {
             //browser launch
-            IWebDriver driver = new ChromeDriver();
+             driver = new ChromeDriver();
 
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
