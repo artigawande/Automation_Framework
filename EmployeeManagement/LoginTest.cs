@@ -23,11 +23,12 @@ namespace EmployeeManagement
         }
 
         [Test]
-
-        public void InvalidLoginTest()
+        [TestCase("john", "john345", "Invalid credential")]
+        [TestCase("peter", "peter123", "Invalid credential")]
+        public void InvalidLoginTest(string username, string password, string expectedError)
         {
-            driver.FindElement(By.XPath("//input[@placeholder='Username']")).SendKeys("username123");
-            driver.FindElement(By.XPath("//input[@type='password']")).SendKeys("user@123");
+            driver.FindElement(By.XPath("//input[@placeholder='Username']")).SendKeys(username);
+            driver.FindElement(By.XPath("//input[@type='password']")).SendKeys(password);
             driver.FindElement(By.XPath("//button[@type='submit']")).Click();
 
           string actualerror=  driver.FindElement(By.XPath("//p[contains(normalize-space(),'cred')]")).Text;
@@ -35,7 +36,7 @@ namespace EmployeeManagement
 
 
             //Assert the error ,essage Invalid Credential
-            Assert.That(actualerror, Is.EqualTo("Invalid credential"),"Assertion on error message");
+            Assert.That(actualerror, Is.EqualTo("expectedError"),"Assertion on error message");
 
             Assert.That(true);
         }
