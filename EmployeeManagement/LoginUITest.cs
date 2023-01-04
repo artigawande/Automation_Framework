@@ -19,8 +19,8 @@ namespace EmployeeManagement
         {
 
 
-            string actualUsernamePlaceholder = driver.FindElement(By.Name("username")).GetAttribute("placeholder");
-            string actualPasswordPlaceholder = driver.FindElement(By.Name("password")).GetAttribute("placeholder");
+            string actualUsernamePlaceholder = driver.FindElement(By.XPath("//input[@placeholder='Username']")).GetAttribute("placeholder");
+            string actualPasswordPlaceholder = driver.FindElement(By.XPath("//input[@type='password']")).GetAttribute("placeholder");
 
             Assert.That(actualUsernamePlaceholder, Is.EqualTo("Username"));
             Assert.That(actualPasswordPlaceholder, Is.EqualTo("Password"));
