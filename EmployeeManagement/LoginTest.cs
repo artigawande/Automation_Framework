@@ -23,8 +23,8 @@ namespace EmployeeManagement
         }
 
         [Test]
-        [TestCase("john", "john345", "Invalid credential")]
-        [TestCase("peter", "peter123", "Invalid credential")]
+        [TestCase("john", "john345", "Invalid credentials")]
+        [TestCase("peter", "peter123", "Invalid credentials")]
         public void InvalidLoginTest(string username, string password, string expectedError)
         {
             driver.FindElement(By.XPath("//input[@placeholder='Username']")).SendKeys(username);
@@ -36,7 +36,7 @@ namespace EmployeeManagement
 
 
             //Assert the error ,essage Invalid Credential
-            Assert.That(actualerror, Is.EqualTo("expectedError"),"Assertion on error message");
+            Assert.That(actualerror, Is.EqualTo(expectedError),"Assertion on error message");
 
             Assert.That(true);
         }
