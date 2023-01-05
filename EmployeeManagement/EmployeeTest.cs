@@ -31,7 +31,7 @@ namespace EmployeeManagement
             driver.FindElement(By.XPath("//button[@type='submit']")).Click();
 
             string Employee = driver.FindElement(By.CssSelector("[class='oxd-text oxd-text--h6 --strong']")).Text;
-            Console.WriteLine(Employee.ToCharArray());
+            Employee.ToCharArray();
 
             Assert.That(ActualResult.Contains(Employee), "Employee details");
 
