@@ -63,7 +63,9 @@ namespace EmployeeManagement.Utilities
 
         public static object[] InvaliLoginData2()
         {
-            object[] data = ExcelUtils.GetSheetIntoObjectArray(@"C:\Users\artig\Desktop\CSharp\AutomationFramework\EmployeeManagement\TestData\Orange_data.xlsx", "InvalidLoginTest");
+            //object[] data = ExcelUtils.GetSheetIntoObjectArray(@"C:\Users\artig\Desktop\CSharp\AutomationFramework\EmployeeManagement\TestData\Orange_data.xlsx", "InvalidLoginTest");
+
+            object[] data = ExcelUtils.GetSheetIntoObjectArray(@"C:\Users\artig\Desktop\CSharp\AutomationFramework\EmployeeManagement\TestData\Orange_data.xlsx", "AddValidEmployeeTes");
 
             return data;
         }
