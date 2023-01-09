@@ -1,4 +1,5 @@
 ﻿using EmployeeManagement.Base;
+using EmployeeManagement.Pages;
 using EmployeeManagement.Utilities;
 using OpenQA.Selenium;
 using System;
@@ -11,11 +12,16 @@ namespace EmployeeManagement
 {
     public class LoginTest : AutomationWrapper
     {
-        [Test]
+        [Test, Retry(2)]
         public void ValidLoginTest()
         {
-            driver.FindElement(By.XPath("//input[@placeholder='Username']")).SendKeys("Admin");
-            driver.FindElement(By.XPath("//input[@type='password']")).SendKeys("admin123");
+            LoginPages loginpage = new LoginPages(driver);
+            loginpage.EnterUserName("Admin");
+            loginpage.EnterPassword("admin123");
+
+
+            /*driver.FindElement(By.XPath("//input[@placeholder='Username']")).SendKeys("Admin");
+            driver.FindElement(By.XPath("//input[@type='password']")).SendKeys("admin123");*/
             driver.FindElement(By.XPath("//button[@type='submit']")).Click();
 
             string actualUrl = driver.Url;
